@@ -6,7 +6,7 @@ Shader "Custom/Unlit" {
 
     SubShader {
         Tags {
-            "RenderPipeline" = "HDRenderPipeline" // "RenderType" = "HDUnlitShader"
+            "RenderPipeline" = "HDRenderPipeline"
         }
 
         // Unlit shader always render in forward
@@ -34,7 +34,6 @@ Shader "Custom/Unlit" {
                 float4 positionCS : SV_Position;
                 float2 texCoord0 : TEXCOORD0;
             };
-
 
             TEXTURE2D(_UnlitColorMap);
             SAMPLER(sampler_UnlitColorMap);
