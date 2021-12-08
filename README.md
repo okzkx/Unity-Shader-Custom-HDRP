@@ -20,6 +20,7 @@
    ```c
    #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
    #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
+   #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightDefinition.cs.hlsl"
    ```
 
 2. 依照 HDRP Shader 中的变量命名，函数调用方式来进行 Shader 代码编写。保持为最新最标准的统一 HDRP Shader 编写规范。
@@ -39,3 +40,7 @@
 #### 2. Lambert
 
 ![Lambert](~Documents/Lambert.png)
+
+#### 3. HalfLambert
+
+![HalfLambert](~Documents/HalfLambert.png)
