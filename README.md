@@ -34,8 +34,8 @@
 
 #### 1. Unlit
 
-![1.Unlit](~Documents/1.Unlit.png)
+![Unlit](~Documents/Unlit.png)
 
 #### 2. Lambert
 
-![2. Lambert](~Documents/2. Lambert.png)
+![Lambert](~Documents/Lambert.png)
