@@ -34,7 +34,7 @@
 
 #### 1. Unlit
 
-![1. Unlit](~Documents/1. Unlit.png)
+![1.Unlit](~Documents/1.Unlit.png)
 
 #### 2. Lambert
 
