@@ -32,6 +32,10 @@
 
 ## 效果展示
 
-#### 1. Unlit 无光
+#### 1. Unlit
 
-![QQ截图20211206233721](~Documents/Unlit.png)
+![1. Unlit](~Documents/1. Unlit.png)
+
+#### 2. Lambert
+
+![2. Lambert](~Documents/2. Lambert.png)
