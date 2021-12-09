@@ -30,17 +30,32 @@
 - 感谢 B 站 [@Samlee2021](https://space.bilibili.com/291230921) 的 URP_Shader 技术支持
 - B 站 [庄懂技术美术入门](https://space.bilibili.com/6373917)
 - [HDRP 源码阅读](https://github.com/Unity-Technologies/Graphics/tree/master/com.unity.render-pipelines.high-definition)
+- [自己的 BRDF 笔记](https://okzkx.gitbook.io/blogs/unity/research/render/brdf)
 
 ## 效果展示
 
 #### 1. Unlit
 
+##### 无光
+
 ![Unlit](~Documents/Unlit.png)
 
-#### 2. Lambert
+#### 2. SimpleLit
 
-![Lambert](~Documents/Lambert.png)
+##### 简单光照
 
-#### 3. HalfLambert
+- 通过材质面板属性可以调整漫反射和高光反射模型，可以自由组合
 
-![HalfLambert](~Documents/HalfLambert.png)
+  - 漫反射模型
+    - Lambert
+    - HalfLambert
+
+  - 高光反射模型
+    - None 
+    - Phone
+    - BlingPhone
+
+- 使用伪 BRDF 进行光照模型的混合
+
+![SimpleLit](~Documents/SimpleLit.png)
+

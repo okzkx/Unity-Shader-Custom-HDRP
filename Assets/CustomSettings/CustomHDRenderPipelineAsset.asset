@@ -266,7 +266,7 @@ MonoBehaviour:
     m_ObsoleteDecalLayerName7: 
     m_ObsoleteSupportRuntimeDebugDisplay: 0
   allowShaderVariantStripping: 1
-  enableSRPBatcher: 1
+  enableSRPBatcher: 0
   availableMaterialQualityLevels: 0
   m_DefaultMaterialQualityLevel: 1
   diffusionProfileSettings: {fileID: 0}

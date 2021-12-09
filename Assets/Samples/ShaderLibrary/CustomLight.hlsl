@@ -10,11 +10,11 @@ struct Light
     float3 dirWS;
 };
 
-Light GetMainLight()
+Light GetSimpleLight()
 {
     DirectionalLightData directionalLightData = _DirectionalLightDatas[0];
     Light light;
-    light.color = directionalLightData.color;
+    light.color = saturate(directionalLightData.color);
     light.dirWS = -directionalLightData.forward;
     return light;
 }
