@@ -6,7 +6,7 @@ Shader "Custom/SimpleLit" {
         [MainTexture]_MainTex("表面纹理",2D)="white"{}
         [KeywordEnum(None, Phone, Bling_Phone)] _Specular("漫反射模型", Float) = 0
         _SpecularPow ("高光锐利度", Range(1,90)) =30
-        _SpecularCol ("高光颜色", color) =(1.0,1.0,1.0,1.0)
+        _SpecularColor ("高光颜色", color) =(1.0,1.0,1.0,1.0)
     }
 
     SubShader {
@@ -47,7 +47,7 @@ Shader "Custom/SimpleLit" {
 
             struct AttributesMesh
             {
-                float4 positionOS : POSITION;
+                float3 positionOS : POSITION;
                 float3 normalOS : NORMAL;
                 float2 uv0:TEXCOORD;
             };
@@ -73,7 +73,7 @@ Shader "Custom/SimpleLit" {
             float4 _MainTex_ST;
             float4 _BaseColor;
             float _SpecularPow;
-            float4 _SpecularCol;
+            float4 _SpecularColor;
 
             CBUFFER_END
 
@@ -109,7 +109,7 @@ Shader "Custom/SimpleLit" {
 
                 // Specular
                 #if !defined(_SPECULAR_NONE)
-                    float3 viewWS = normalize(_WorldSpaceCameraPos.xyz - input.positionCS);
+                    float3 viewWS = normalize(_WorldSpaceCameraPos.xyz - input.positionWS);
                     float specularFactor = 0;
                 #if defined(_SPECULAR_PHONE)
                     float3 reflectWS = reflect(-lightWS, input.normalWS);
@@ -118,7 +118,7 @@ Shader "Custom/SimpleLit" {
                     float3 halfWS = normalize(viewWS + lightWS);
                     specularFactor = pow(max(0.0, dot(input.normalWS, halfWS)), _SpecularPow);
                 #endif
-                    specular = specularFactor * _SpecularCol;
+                    specular = specularFactor * _SpecularColor.rgb;
                 #endif
 
                 // albedo : material surface color
