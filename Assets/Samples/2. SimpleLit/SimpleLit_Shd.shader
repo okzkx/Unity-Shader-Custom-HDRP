@@ -1,6 +1,6 @@
 Shader "Custom/SimpleLit" {
     Properties {
-        _LightIntencity("LightIntencity", Float) = 1
+        _LightIntencity("光照强度", Float) = 4
         [KeywordEnum(Lambert, Half_Lambert)] _Diffuse("漫反射模型", Float) = 0
         [MainColor]_BaseColor("漫反射颜色",Color)=(1,1,1,1)
         [MainTexture]_MainTex("表面纹理",2D)="white"{}
