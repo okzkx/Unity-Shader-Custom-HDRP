@@ -4,7 +4,7 @@ Shader "Custom/SimpleLit" {
         [KeywordEnum(Lambert, Half_Lambert)] _Diffuse("漫反射模型", Float) = 0
         [MainColor]_BaseColor("漫反射颜色",Color)=(1,1,1,1)
         [MainTexture]_MainTex("表面纹理",2D)="white"{}
-        [KeywordEnum(None,Phone, Bling_Phone)] _Specular("漫反射模型", Float) = 0
+        [KeywordEnum(None, Phone, Bling_Phone)] _Specular("漫反射模型", Float) = 0
         _SpecularPow ("高光锐利度", Range(1,90)) =30
         _SpecularCol ("高光颜色", color) =(1.0,1.0,1.0,1.0)
     }
@@ -94,7 +94,7 @@ Shader "Custom/SimpleLit" {
             float4 Frag(VaryingsMeshToPS input): SV_Target0
             {
                 SimpleLight simpleLight = GetSimpleLight();
-                float3 lightWS = normalize(simpleLight.directionWS); // 获取lDir
+                float3 lightWS = normalize(simpleLight.directionWS);
 
                 // L(Luminance) : Radiance input
                 float3 Li = simpleLight.color;
@@ -109,11 +109,11 @@ Shader "Custom/SimpleLit" {
 
                 // Specular
                 #if !defined(_SPECULAR_NONE)
-                    float3 viewWS = normalize(_WorldSpaceCameraPos.xyz - input.positionCS); // 获取vDir
+                    float3 viewWS = normalize(_WorldSpaceCameraPos.xyz - input.positionCS);
                     float specularFactor = 0;
                 #if defined(_SPECULAR_PHONE)
                     float3 reflectWS = reflect(-lightWS, input.normalWS);
-                    specularFactor = pow(max(0.0, dot(reflectWS, viewWS)), _SpecularPow); // Phone
+                    specularFactor = pow(max(0.0, dot(reflectWS, viewWS)), _SpecularPow);
                 #else // Defined _SPECULAR_BLING_PHONE
                     float3 halfWS = normalize(viewWS + lightWS);
                     specularFactor = pow(max(0.0, dot(input.normalWS, halfWS)), _SpecularPow); // BlinnPhong
