@@ -34,6 +34,8 @@
 
 ## 效果展示
 
+### 物体渲染
+
 #### 1. Unlit
 
 ##### 无光
@@ -59,10 +61,16 @@
 
 ![SimpleLit](~Documents/SimpleLit.png)
 
-#### 50. Outline (ColorGradiant)
+### 全屏特效
+
+#### 50. Outline (Color Threshold)
+
+基于颜色阙值的外描边，只能描边需要描边物体的最外层，而且物体亮度不能接近 0
 
 ![Outline](~Documents/Outline.png)
 
 #### 51. GaussionBlur
+
+高斯模糊
 
 ![GaussionBlur](~Documents/GaussionBlur.png)
