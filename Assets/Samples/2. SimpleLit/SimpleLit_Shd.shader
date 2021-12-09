@@ -116,7 +116,7 @@ Shader "Custom/SimpleLit" {
                     specularFactor = pow(max(0.0, dot(reflectWS, viewWS)), _SpecularPow);
                 #else // Defined _SPECULAR_BLING_PHONE
                     float3 halfWS = normalize(viewWS + lightWS);
-                    specularFactor = pow(max(0.0, dot(input.normalWS, halfWS)), _SpecularPow); // BlinnPhong
+                    specularFactor = pow(max(0.0, dot(input.normalWS, halfWS)), _SpecularPow);
                 #endif
                     specular = specularFactor * _SpecularCol;
                 #endif
