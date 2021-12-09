@@ -62,3 +62,7 @@
 #### 50. Outline (ColorGradiant)
 
 ![Outline](~Documents/Outline.png)
+
+#### 51. GaussionBlur
+
+![GaussionBlur](~Documents/GaussionBlur.png)
