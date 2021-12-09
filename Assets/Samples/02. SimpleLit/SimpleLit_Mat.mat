@@ -239,7 +239,7 @@ Material:
     - _SpecularAAThreshold: 0.2
     - _SpecularMode: 0
     - _SpecularOcclusionMode: 1
-    - _SpecularPow: 30
+    - _SpecularPow: 64
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
