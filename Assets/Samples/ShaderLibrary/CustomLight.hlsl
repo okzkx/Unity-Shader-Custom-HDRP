@@ -4,18 +4,18 @@
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/Lighting/LightDefinition.cs.hlsl"
 
-struct Light
+struct SimpleLight
 {
     float3 color;
-    float3 dirWS;
+    float3 directionWS;
 };
 
-Light GetSimpleLight()
+SimpleLight GetSimpleLight()
 {
     DirectionalLightData directionalLightData = _DirectionalLightDatas[0];
-    Light light;
+    SimpleLight light;
     light.color = saturate(directionalLightData.color);
-    light.dirWS = -directionalLightData.forward;
+    light.directionWS = -directionalLightData.forward;
     return light;
 }
 

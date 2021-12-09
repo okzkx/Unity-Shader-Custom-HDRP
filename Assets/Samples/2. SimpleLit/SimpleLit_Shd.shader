@@ -93,8 +93,8 @@ Shader "Custom/SimpleLit" {
 
             float4 Frag(VaryingsMeshToPS input): SV_Target0
             {
-                Light simpleLight = GetSimpleLight();
-                float3 lightWS = normalize(simpleLight.dirWS); // 获取lDir
+                SimpleLight simpleLight = GetSimpleLight();
+                float3 lightWS = normalize(simpleLight.directionWS); // 获取lDir
 
                 // L(Luminance) : Radiance input
                 float3 Li = simpleLight.color;
