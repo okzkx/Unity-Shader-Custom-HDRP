@@ -30,7 +30,7 @@ HDRP 效果练习
 - B 站 [庄懂技术美术入门](https://space.bilibili.com/6373917)
 - [HDRP 源码阅读](https://github.com/Unity-Technologies/Graphics/tree/master/com.unity.render-pipelines.high-definition)
 - [自己的 BRDF 笔记](https://okzkx.gitbook.io/blogs/unity/research/render/brdf)
-- 
+- [HDRP-Custom-Passes](https://github.com/alelievr/HDRP-Custom-Passes)
 
 ## 效果展示
 
