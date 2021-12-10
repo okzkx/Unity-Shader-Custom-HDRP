@@ -242,6 +242,7 @@ Material:
     - _NormalMapSpace: 0
     - _NormalScale: 1
     - _OpaqueCullMode: 2
+    - _OutlineWidth: 0.02
     - _Overlay: 2
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
@@ -314,6 +315,7 @@ Material:
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _MainCol: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularCol: {r: 1, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}

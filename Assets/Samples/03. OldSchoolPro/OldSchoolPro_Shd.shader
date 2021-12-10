@@ -169,7 +169,7 @@ Shader "Custom/OldSchoolPro" {
 
 
             // 三颜色（顶，侧，底）插值环境光方法
-            float3 TriColAmbient(float3 n, float3 uCol, float3 sCol, float dCol)
+            float3 TriColAmbient(float3 n, float3 uCol, float3 sCol, float3 dCol)
             {
                 float uMask = max(0.0, n.g); // 获取朝上部分遮罩
                 float dMask = max(0.0, -n.g); // 获取朝下部分遮罩
@@ -210,7 +210,7 @@ Shader "Custom/OldSchoolPro" {
                 // 光照模型(直接光照部分)
                 float3 baseCol = var_MainTex.rgb;
                 float lambert = max(0.0, ndotl);
-                float specCol = var_SpecTex.rgb;
+                float3 specCol = var_SpecTex.rgb;
                 float specPow = lerp(1, _SpecPow, var_SpecTex.a);
                 float phong = pow(max(0.0, vdotr), specPow);
                 float3 dirLighting = baseCol * lambert * mylight.color + specCol * phong;
