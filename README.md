@@ -1,7 +1,8 @@
 # Unity-Shader-Custom-HDRP
+
 ---
 
- 自定义 HDRP 效果
+自定义 HDRP 效果
 
 ---
 
@@ -47,7 +48,6 @@ HDRP 效果练习
 ##### 简单光照
 
 - 通过材质面板属性可以调整漫反射和高光反射模型，可以自由组合
-
   - 漫反射模型
     - Lambert
     - HalfLambert
@@ -56,7 +56,6 @@ HDRP 效果练习
     - None 
     - Phone
     - BlingPhone
-
 - 使用伪 BRDF 进行光照模型的混合
 
 ![SimpleLit](~Documents/SimpleLit.png)
@@ -64,8 +63,6 @@ HDRP 效果练习
 #### 3. OldSchoolPro
 
 ![SimpleLit](~Documents/OldSchoolPro.png)
-
-
 
 ### 全屏特效
 
