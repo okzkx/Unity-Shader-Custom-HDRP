@@ -24,8 +24,8 @@ Shader "Custom/OldSchoolPro" {
         _EmitInt ("自发光强度", range(1, 10)) = 1
 
         [Header(Outline)][Space(50)]
-        _outlinecolor ("outline color", Color) = (0,0,0,1)
-        _outlinewidth ("outline width", Range(0, 1)) = 0.01
+        _OutlineColor ("outline color", Color) = (0,0,0,1)
+        _OutlineWidth ("outline width", Range(0, 1)) = 0.01
     }
 
     SubShader {
@@ -37,44 +37,47 @@ Shader "Custom/OldSchoolPro" {
         Pass {
             Name "Outline"
             Tags {
-                "LightMode" = "ForwardOnly"    
+                "LightMode" = "ForwardOnly"
             }
+
             Cull Front
 
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex Vert
+            #pragma fragment Frag
 
             #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
 
-            CBUFFER_START(UnityPerMaterial) //缓冲区
-            //Outline
-            uniform float4 _outlinecolor;
-            uniform float _outlinewidth;
+            CBUFFER_START(UnityPerMaterial)
+
+            uniform float4 _OutlineColor;
+            uniform float _OutlineWidth;
+
             CBUFFER_END
 
-            struct VertexInput
+            struct AttributesMesh
             {
-                float4 vertex : POSITION;
-                float3 normal : NORMAL;
+                float3 positionOS : POSITION;
+                float3 normalOS : NORMAL;
             };
 
-            struct VertexOutput
+            struct VaringsMeshToPs
             {
-                float4 pos : SV_POSITION;
+                float4 positionCS : SV_POSITION;
             };
 
-            VertexOutput vert(VertexInput v)
+            VaringsMeshToPs Vert(AttributesMesh inputMesh)
             {
-                VertexOutput o = (VertexOutput)0;
-                o.pos = TransformObjectToHClip(float4(v.vertex.xyz + v.normal * _outlinewidth, 1));
-                return o;
+                VaringsMeshToPs varings;
+                float3 processedPositionOS = inputMesh.positionOS + inputMesh.normalOS * _OutlineWidth;
+                varings.positionCS = TransformObjectToHClip(processedPositionOS);
+                return varings;
             }
 
-            float4 frag(VertexOutput i) : COLOR
+            float4 Frag(VaringsMeshToPs input) : COLOR
             {
-                return float4(_outlinecolor.rgb, 0);
+                return float4(_OutlineColor.rgb, 1);
             }
             ENDHLSL
         }
@@ -82,11 +85,11 @@ Shader "Custom/OldSchoolPro" {
         Pass {
             Name "Character"
             Tags {
-                "LightMode" = "Forward"    
+                "LightMode" = "Forward"
             }
             HLSLPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex Vert
+            #pragma fragment Frag
 
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS_CASCADE
@@ -97,7 +100,8 @@ Shader "Custom/OldSchoolPro" {
             #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
             #include "../ShaderLibrary/CustomLight.hlsl"
 
-            CBUFFER_START(UnityPerMaterial) //缓冲区
+            CBUFFER_START(UnityPerMaterial)
+
             // Texture
             uniform float4 _MainTex_ST;
             // Diffuse
@@ -114,6 +118,7 @@ Shader "Custom/OldSchoolPro" {
             uniform float _CubemapMip;
             // Emission
             uniform float _EmitInt;
+
             CBUFFER_END
 
             TEXTURE2D(_MainTex);
@@ -128,37 +133,38 @@ Shader "Custom/OldSchoolPro" {
             TEXTURE2D(_EmitTex);
             SAMPLER(sampler_EmitTex);
 
+            // TODO : Up grade CubeMap 
             samplerCUBE _Cubemap;
 
 
-            struct VertexInput //输入结构
+            struct AttributesMesh
             {
-                float4 vertex : POSITION; // 顶点信息 Get✔
-                float2 uv0 : TEXCOORD0; // UV信息 Get✔
-                float4 normal : NORMAL; // 法线信息 Get✔
-                float4 tangent : TANGENT; // 切线信息 Get✔
+                float3 positionOS : POSITION;
+                float2 uv0 : TEXCOORD0;
+                float3 normalOS : NORMAL;
+                float4 tangentOS : TANGENT;
             };
 
-            struct VertexOutput //输出结构
+            struct VaringsMeshToPs
             {
-                float4 pos : SV_POSITION; // 屏幕顶点位置
-                float2 uv0 : TEXCOORD0; // UV0
-                float3 posWS : TEXCOORD1; // 世界空间顶点位置
-                float3 nDirWS : TEXCOORD2; // 世界空间法线方向
-                float3 tDirWS : TEXCOORD3; // 世界空间切线方向
-                float3 bDirWS : TEXCOORD4; // 世界空间副切线方向
+                float4 positionCS : SV_POSITION;
+                float2 texCoord0 : TEXCOORD0;
+                float3 positionWS : TEXCOORD1;
+                float3 normalWS : TEXCOORD2;
+                float3 tangentWS : TEXCOORD3;
+                float3 biTangentWS : TEXCOORD4;
             };
 
-            VertexOutput vert(VertexInput v) //顶点shader
+            VaringsMeshToPs Vert(AttributesMesh inputMesh)
             {
-                VertexOutput o = (VertexOutput)0; // 新建输出结构
-                o.pos = TransformObjectToHClip(v.vertex); // 顶点位置 OS>CS
-                o.uv0 = v.uv0 * _MainTex_ST.xy + _MainTex_ST.zw; // 传递UV
-                o.posWS = TransformObjectToWorld(v.vertex); // 顶点位置 OS>WS
-                o.nDirWS = TransformObjectToWorldNormal(v.normal); // 法线方向 OS>WS
-                o.tDirWS = normalize(TransformObjectToWorldDir(float4(v.tangent.xyz, 0.0))); // 切线方向 OS>WS
-                o.bDirWS = normalize(cross(o.nDirWS, o.tDirWS) * v.tangent.w); // 副切线方向
-                return o; // 返回输出结构
+                VaringsMeshToPs varyings;
+                varyings.positionCS = TransformObjectToHClip(inputMesh.positionOS);
+                varyings.texCoord0 = TRANSFORM_TEX(inputMesh.uv0, _MainTex);
+                varyings.positionWS = TransformObjectToWorld(inputMesh.positionOS);
+                varyings.normalWS = TransformObjectToWorldNormal(inputMesh.normalOS, true);
+                varyings.tangentWS = TransformObjectToWorldDir(inputMesh.tangentOS.xyz, true); // 切线方向 OS>WS
+                varyings.biTangentWS = cross(varyings.normalWS, varyings.tangentWS) * sign(inputMesh.tangentOS.w); // 副切线方向
+                return varyings;
             }
 
 
@@ -174,59 +180,51 @@ Shader "Custom/OldSchoolPro" {
                 return envCol;
             }
 
-            float4 frag(VertexOutput i) : COLOR //像素shader
+            float4 Frag(VaringsMeshToPs input) : COLOR //像素shader
             {
-                // return float4(1, 1, 1, 1);
                 // 准备向量
-                float3 nDirTS = UnpackNormalScale(SAMPLE_TEXTURE2D(_NormTex, sampler_NormTex, i.uv0), _NormalScale);
+                float3 normalTS = UnpackNormalScale(SAMPLE_TEXTURE2D(_NormTex, sampler_NormTex, input.texCoord0), _NormalScale);
+
                 // 采样法线纹理并解码 切线空间nDir
-                float3x3 TBN = float3x3(i.tDirWS, i.bDirWS, i.nDirWS);
-                float3 nDirWS = normalize(mul(nDirTS, TBN));
-                float3 vDirWS = normalize(_WorldSpaceCameraPos.xyz - i.posWS.xyz);
-                float3 vrDirWS = reflect(-vDirWS, nDirWS);
+                float3x3 tangentToWorldMatrix = float3x3(input.tangentWS, input.biTangentWS, input.normalWS);
+                float3 normalWS = normalize(mul(normalTS, tangentToWorldMatrix));
+                float3 viewWS = normalize(_WorldSpaceCameraPos.xyz - input.positionWS.xyz);
+                float3 viewReflectWS = reflect(-viewWS, normalWS);
                 SimpleLight mylight = GetSimpleLight();
-                float3 lDirWS = normalize(mylight.directionWS);
-                float3 lrDirWS = reflect(-lDirWS, nDirWS);
+                float3 lightWS = mylight.directionWS;
+                float3 lightReflectWS = reflect(-lightWS, normalWS);
 
                 // 准备点积结果
-                float ndotl = dot(nDirWS, lDirWS);
-                float vdotr = dot(vDirWS, lrDirWS);
-                float vdotn = dot(vDirWS, nDirWS);
+                float ndotl = dot(normalWS, lightWS);
+                float vdotr = dot(viewWS, lightReflectWS);
+                float vdotn = dot(viewWS, normalWS);
 
                 // 采样纹理
-                float4 var_MainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv0);
-                float4 var_SpecTex = SAMPLE_TEXTURE2D(_SpecTex, sampler_SpecTex, i.uv0);
-                float3 var_EmitTex = SAMPLE_TEXTURE2D(_EmitTex, sampler_EmitTex, i.uv0).rgb;
-                float3 var_Cubemap = texCUBElod(_Cubemap, float4(vrDirWS, lerp(_CubemapMip, 0.0, var_SpecTex.a))).rgb;
+                float4 var_MainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.texCoord0);
+                float4 var_SpecTex = SAMPLE_TEXTURE2D(_SpecTex, sampler_SpecTex, input.texCoord0);
+                float3 var_EmitTex = SAMPLE_TEXTURE2D(_EmitTex, sampler_EmitTex, input.texCoord0).rgb;
+
                 // 采样Cubemap
+                float3 var_Cubemap = texCUBElod(_Cubemap, float4(viewReflectWS, lerp(_CubemapMip, 0.0, var_SpecTex.a))).rgb;
 
                 // 光照模型(直接光照部分)
                 float3 baseCol = var_MainTex.rgb;
                 float lambert = max(0.0, ndotl);
-
                 float specCol = var_SpecTex.rgb;
                 float specPow = lerp(1, _SpecPow, var_SpecTex.a);
                 float phong = pow(max(0.0, vdotr), specPow);
-
                 float3 dirLighting = baseCol * lambert * mylight.color + specCol * phong;
 
                 // 光照模型(环境光照部分)
-                float3 envCol = TriColAmbient(nDirWS, _EnvUpCol, _EnvSideCol, _EnvDownCol);
-
+                float3 envCol = TriColAmbient(normalWS, _EnvUpCol, _EnvSideCol, _EnvDownCol);
                 float fresnel = pow(max(0.0, 1.0 - vdotn), _FresnelPow); // 菲涅尔
-
                 float occlusion = var_MainTex.a;
-
-                float3 envLighting = (baseCol * envCol * _EnvDiffInt + var_Cubemap * fresnel * _EnvSpecInt * var_SpecTex
-                    .a) * occlusion;
+                float3 envLighting = (baseCol * envCol * _EnvDiffInt + var_Cubemap * fresnel * _EnvSpecInt * var_SpecTex.a) * occlusion;
 
                 // 光照模型(自发光部分)
                 float3 emission = var_EmitTex * _EmitInt * (sin(_Time.z) * 0.5 + 0.5);
 
-                // 返回结果
-                float3 finalRGB = dirLighting + envLighting + emission;
-
-                return half4(finalRGB, 1.0);
+                return float4(dirLighting + envLighting + emission, 1.0);
             }
             ENDHLSL
         }
