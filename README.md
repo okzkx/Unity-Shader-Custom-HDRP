@@ -1,7 +1,7 @@
 # Unity-Shader-Custom-HDRP
 ---
 
- ZKX‘S 自定义 HDRP Shader
+ 自定义 HDRP 效果
 
 ---
 
@@ -9,7 +9,7 @@
 
 ### 写作目的
 
-收集整理成为 HDRP 标准 Shader 库
+HDRP 效果练习
 
 ### 写作约束
 
@@ -27,10 +27,10 @@
 
 ### 参考
 
-- 感谢 B 站 [@Samlee2021](https://space.bilibili.com/291230921) 的 URP_Shader 技术支持
 - B 站 [庄懂技术美术入门](https://space.bilibili.com/6373917)
 - [HDRP 源码阅读](https://github.com/Unity-Technologies/Graphics/tree/master/com.unity.render-pipelines.high-definition)
 - [自己的 BRDF 笔记](https://okzkx.gitbook.io/blogs/unity/research/render/brdf)
+- 
 
 ## 效果展示
 
@@ -71,12 +71,14 @@
 
 #### 50. Outline (Color Threshold)
 
-基于颜色阙值的外描边，只能描边需要描边物体的最外层，而且物体亮度不能接近 0
+- 官方文档代码
+- 基于颜色阙值的外描边，只能描边需要描边物体的最外层，而且物体亮度不能接近 0
 
 ![Outline](~Documents/Outline.png)
 
 #### 51. GaussionBlur
 
-高斯模糊
+- 官方文档代码
+- 高斯模糊
 
 ![GaussionBlur](~Documents/GaussionBlur.png)
