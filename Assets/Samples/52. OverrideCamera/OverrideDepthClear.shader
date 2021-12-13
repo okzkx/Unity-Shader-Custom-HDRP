@@ -1,4 +1,4 @@
-Shader "Hidden/Renderers/ForegroundDepthClear"
+Shader "Hidden/Renderers/OverrideDepthClear"
 {
     HLSLINCLUDE
 

@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -156,17 +156,17 @@ MonoBehaviour:
   fadeRadius: 0
   priority: 0
   customPasses:
-  - rid: 601534247927808000
+  - rid: 601534313504702476
   injectionPoint: 2
   m_TargetCamera: {fileID: 0}
   useTargetCamera: 0
   references:
     version: 2
     RefIds:
-    - rid: 601534247927808000
-      type: {class: Foreground, ns: , asm: Assembly-CSharp}
+    - rid: 601534313504702476
+      type: {class: OverrideCamera, ns: , asm: Assembly-CSharp}
       data:
-        m_Name: 
+        m_Name: Custom Pass
         enabled: 1
         targetColorBuffer: 0
         targetDepthBuffer: 0
@@ -174,11 +174,11 @@ MonoBehaviour:
         passFoldout: 0
         m_Version: 0
         fov: 45
-        foregroundMask:
+        overrideMask:
           serializedVersion: 2
           m_Bits: 64
-        position: {x: 0, y: 3, z: -20}
-        rotation: {x: 0, y: 0, z: 0, w: 1}
+        position: {x: 0, y: 1, z: -20}
+        rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!4 &54125987
 Transform:
   m_ObjectHideFlags: 0
