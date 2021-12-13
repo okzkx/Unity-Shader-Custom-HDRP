@@ -86,6 +86,6 @@ HDRP 效果练习
 
 ![ForegroundCamera](~Documents/ForegroundCamera.jpeg)
 
-#### 52. Camera Capture
+#### 53. Camera Capture
 
 ![CameraCapture](~Documents/CameraCapture.png)
