@@ -85,3 +85,7 @@ HDRP 效果练习
 - 以一个单独的 Pass ，以单独的视角、fov，渲染特定层的物体
 
 ![ForegroundCamera](~Documents/ForegroundCamera.jpeg)
+
+#### 52. Camera Capture
+
+![CameraCapture](~Documents/CameraCapture.png)
