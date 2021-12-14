@@ -123,100 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &54125985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 54125987}
-  - component: {fileID: 54125986}
-  m_Layer: 0
-  m_Name: PassVolume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &54125986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54125985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  fadeRadius: 0
-  priority: 0
-  customPasses:
-  - rid: 601534313504702481
-  - rid: 601534313504702483
-  injectionPoint: 5
-  m_TargetCamera: {fileID: 0}
-  useTargetCamera: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 601534313504702481
-      type: {class: OverrideNormalMap, ns: , asm: Assembly-CSharp}
-      data:
-        m_Name: Custom Pass
-        enabled: 0
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 0
-        passFoldout: 0
-        m_Version: 0
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 64
-    - rid: 601534313504702483
-      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
-        asm: Unity.RenderPipelines.HighDefinition.Runtime}
-      data:
-        m_Name: Custom Pass
-        enabled: 1
-        targetColorBuffer: 0
-        targetDepthBuffer: 0
-        clearFlags: 0
-        passFoldout: 0
-        m_Version: 0
-        filterFoldout: 0
-        rendererFoldout: 0
-        renderQueueType: 2
-        layerMask:
-          serializedVersion: 2
-          m_Bits: 64
-        sortingCriteria: 59
-        overrideMaterial: {fileID: 0}
-        overrideMaterialPassIndex: 0
-        overrideMaterialPassName: Forward
-        overrideDepthState: 0
-        depthCompareFunction: 4
-        depthWrite: 1
-        shaderPass: 0
---- !u!4 &54125987
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54125985}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &63744258
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +217,7 @@ RectTransform:
   m_Children:
   - {fileID: 1084495075}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -789,7 +695,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1084495074
 GameObject:
@@ -959,7 +865,7 @@ Transform:
   - {fileID: 1179772132}
   - {fileID: 499647944}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1179772130
 GameObject:
@@ -1259,7 +1165,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1536004124
 GameObject:
@@ -1439,7 +1345,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &2064480889
 GameObject:
@@ -1488,5 +1394,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
