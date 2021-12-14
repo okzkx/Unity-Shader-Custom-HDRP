@@ -3,6 +3,9 @@ using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering;
 
+/// <summary>
+/// TODO: How to use it, It's a question
+/// </summary>
 class OverrideNormalMap : CustomPass
 {
     public LayerMask layerMask;
