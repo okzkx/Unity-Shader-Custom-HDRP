@@ -58,10 +58,6 @@ HDRP 效果练习
 
 ![SimpleLit](~Documents/SimpleLit.png)
 
-#### 3. OldSchoolPro
-
-![SimpleLit](~Documents/OldSchoolPro.png)
-
 ### 全屏特效
 
 #### 50. Outline (Color Threshold)
