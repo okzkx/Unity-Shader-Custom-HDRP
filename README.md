@@ -89,3 +89,7 @@ HDRP 效果练习
 #### 53. Camera Capture
 
 ![CameraCapture](~Documents/CameraCapture.png)
+
+#### 54. SSAO
+
+![SSAO](~Documents/SSAO.png)
