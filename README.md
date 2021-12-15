@@ -14,7 +14,7 @@ HDRP 效果练习
 
 ### 写作约束
 
-1. 尽量少的引用 HDRP 标准函数库，只引用几个工具方法代码库。这样可以去掉 HDRP 中的无用变体，方便阅读，提升性能。
+1. 适当的引用 HDRP 标准函数库，只引用几个工具方法代码库。这样可以去掉 HDRP 中的无用变体，方便阅读，提升性能。
 
    当前的 HDRP Shader 库引用如下
 
@@ -30,7 +30,6 @@ HDRP 效果练习
 
 - B 站 [庄懂技术美术入门](https://space.bilibili.com/6373917)
 - [HDRP 源码阅读](https://github.com/Unity-Technologies/Graphics/tree/master/com.unity.render-pipelines.high-definition)
-- [自己的 BRDF 笔记](https://okzkx.gitbook.io/blogs/unity/research/render/brdf)
 - [HDRP-Custom-Passes](https://github.com/alelievr/HDRP-Custom-Passes)
 
 ## 效果展示
