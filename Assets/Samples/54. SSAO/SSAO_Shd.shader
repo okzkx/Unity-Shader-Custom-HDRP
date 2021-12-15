@@ -128,8 +128,10 @@ Shader "Custom/SSAO" {
 
                 // L(Luminance) : Radiance input
                 float3 Li = simpleLight.color;
+
                 // E(Illuminance) : To simulate the Irradiance in BRDF
                 float3 E = Li * saturate(dot(input.normalWS, lightWS)) * _LightIntencity;
+
                 // Half Lambert
                 E = E * 0.5 + 0.5;
 
@@ -148,6 +150,7 @@ Shader "Custom/SSAO" {
 
                 // albedo : material surface color
                 float3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, input.texCoord0).rgb * _BaseColor.rgb;
+
                 // Resolve render equation in fake brdf
                 float3 Lo = (albedo / PI + specular) * E;
 
