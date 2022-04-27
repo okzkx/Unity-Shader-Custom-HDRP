@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/00. HDRP/HDRP.unity
-    guid: 8124e5870f4fd4c779e7a5f994e84ad1
+    path: Assets/Samples/55. Shadow/Shadow.unity
+    guid: c8d70057bf1f0d4498791c7711f58390
   m_configObjects: {}
